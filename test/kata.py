@@ -21,8 +21,9 @@ class KataTest(unittest.TestCase):
         self.assertEqualVerbose(300000.2, kata.add_num(inp))
         inp="//+\n 3,000 + 20,700.20 "
         self.assertEqualVerbose(23700.2, kata.add_num(inp))
-        inp="//+\n 3,000 \n 20,700.20 "
-        self.assertEqualVerbose(23700.2, kata.add_num(inp))
+        inp="//+\n 3000 \n -2020 "
+        self.assertRaisesRegex(Exception, "negatives not allowed: -2020",
+                       kata.add_num, inp)
 
 if __name__=="__main__":
     unittest.main()
